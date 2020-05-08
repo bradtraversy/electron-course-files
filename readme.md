@@ -2,7 +2,7 @@
 
 This remo contains all of the projects and files for my Electron course
 
-* Simple Electron Boilerplate
+* Electron Starter
 * ImageShrink App
 * SysTop App
 * BugLogger App
