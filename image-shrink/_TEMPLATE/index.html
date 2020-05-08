@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/all.min.css" />
+		<link rel="stylesheet" href="css/materialize.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>ImageShrink</title>
+	</head>
+	<body>
+		<div class="container center-align">
+			<h3><i class="fas fa-images"></i> ImageShrink</h3>
+			<p>Choose an image to resize</p>
+			<form id="image-form">
+				<div class="file-field input-field">
+					<div class="btn">
+						<span>Browse</span>
+						<input type="file" id="img" />
+					</div>
+
+					<div class="file-path-wrapper">
+						<input
+							class="file-path validate"
+							type="text"
+							placeholder="Upload file"
+						/>
+					</div>
+				</div>
+
+				<p>
+					<strong>Quality:</strong>
+					<em>The lower the quality, the smaller the filesize</em>
+				</p>
+				<p class="range-field">
+					<input type="range" id="slider" min="0" max="100" />
+				</p>
+
+				<input type="submit" class="black btn" value="Resize" />
+			</form>
+
+			<div class="card output">
+				<div class="card-content">
+					Output Path: <span id="output-path"></span>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/materialize.min.js"></script>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+.container {
+  width: 400px;
+  margin-top: 70px;
+  padding: 0 20px;
+}
+
+.about {
+  width: 100%;
+}
+
+.btn {
+  width: 100%;
+}
+
+.output {
+  margin-top: 40px;
+}
+
+#output-path {
+  font-weight: bold;
+}
