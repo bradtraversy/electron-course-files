@@ -34,8 +34,6 @@ app.on('ready', () => {
 
   const mainMenu = Menu.buildFromTemplate(menu)
   Menu.setApplicationMenu(mainMenu)
-
-  mainWindow.on('ready', () => (mainWindow = null))
 })
 
 const menu = [
