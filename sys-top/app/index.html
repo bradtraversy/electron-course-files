@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline'"
+    />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>SysTop | Monitor your CPU</title>
+  </head>
+  <body>
+    <main>
+      <div class="content show">
+        <h1><i class="fas fa-microchip"></i> CPU</h1>
+        <div class="progress-bar">
+          <div class="progress" id="cpu-progress"></div>
+        </div>
+
+        <ul>
+          <li><strong>CPU Usage: </strong><span id="cpu-usage"></span></li>
+          <li><strong>CPU Free: </strong><span id="cpu-free"></span></li>
+        </ul>
+        <div id="cpu-model"></div>
+      </div>
+      <div class="content">
+        <h1><i class="fas fa-info"></i> System Info</h1>
+        <ul>
+          <li><strong>Computer Name: </strong><span id="comp-name"></span></li>
+          <li><strong>OS: </strong><span id="os"></span></li>
+          <li><strong>System Uptime: </strong><span id="sys-uptime"></span></li>
+          <li><strong>System Memory: </strong><span id="mem-total"></span></li>
+        </ul>
+      </div>
+      <div class="content">
+        <h1><i class="fas fa-cog"></i> Settings</h1>
+        <div id="alert" class="hide"></div>
+        <form id="settings-form">
+          <div class="form-control">
+            <label for="cpu-overload">CPU Overload Warning %</label>
+            <input type="number" id="cpu-overload" />
+          </div>
+          <div class="form-control">
+            <label for="alert-frequency">Alert Frequency (In Minutes)</label>
+            <input type="number" id="alert-frequency" />
+          </div>
+          <input type="submit" value="Save" class="btn" />
+        </form>
+      </div>
+    </main>
+    <nav id="nav">
+      <ul>
+        <li>
+          <i class="fas fa-microchip"></i>
+          <p>CPU</p>
+        </li>
+        <li>
+          <i class="fas fa-info"></i>
+          <p>System Info</p>
+        </li>
+        <li>
+          <i class="fas fa-cog"></i>
+          <p>Settings</p>
+        </li>
+      </ul>
+    </nav>
+
+    <script src="js/tabs.js"></script>
+    <script src="js/monitor.js"></script>
+    <script>
+      const settingsForm = document.getElementById('settings-form')
+      const nav = document.getElementById('nav')
+
+      // Get settings
+      ipcRenderer.on('settings:get', (e, settings) => {
+        document.getElementById('cpu-overload').value = settings.cpuOverload
+        document.getElementById('alert-frequency').value =
+          settings.alertFrequency
+      })
+
+      // Submit settings
+      settingsForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const cpuOverload = document.getElementById('cpu-overload').value
+        const alertFrequency = document.getElementById('alert-frequency').value
+
+        // Send new settings to main process
+        ipcRenderer.send('settings:set', {
+          cpuOverload,
+          alertFrequency,
+        })
+
+        showAlert('Settings Saved')
+      })
+
+      // Show alert for settings
+      function showAlert(msg) {
+        const alert = document.getElementById('alert')
+        alert.classList.remove('hide')
+        alert.classList.add('alert')
+        alert.innerText = msg
+
+        setTimeout(() => alert.classList.add('hide'), 3000)
+      }
+
+      // Toggle nav
+      ipcRenderer.on('nav:toggle', () => {
+        nav.classList.toggle('hide')
+      })
+    </script>
+  </body>
+</html>

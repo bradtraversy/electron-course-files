@@ -1,0 +1,144 @@
+:root {
+  --primary-color: #30c88b;
+  --background-color: #000;
+  --secondary-background-color: #333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background-color) url('../img/bg.jpg') no-repeat 0px 40px /
+    cover;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.content {
+  opacity: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(100% - 60px);
+  width: 100%;
+  transition: opacity 0.4s ease;
+  padding: 0 20px;
+}
+
+.content li {
+  padding: 10px 0;
+  border-bottom: 1px #555 solid;
+  background: var(--secondary-background-color);
+}
+
+.content.show {
+  opacity: 1;
+}
+
+.hide {
+  display: none;
+}
+
+nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-top: -5px;
+  width: 100%;
+}
+
+nav ul {
+  background-color: var(--secondary-background-color);
+  display: flex;
+  padding: 5px 0 0;
+  margin: 0;
+  list-style-type: none;
+  height: 60px;
+}
+
+nav ul li {
+  color: #f4f4f4;
+  cursor: pointer;
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+h1,
+nav ul li:hover,
+nav ul li.active {
+  color: var(--primary-color);
+}
+
+nav ul li p {
+  font-size: 12px;
+  margin: 2px 0;
+}
+
+.progress-bar {
+  background: var(--secondary-background-color);
+  border-radius: 13px;
+  height: 20px;
+  width: 300px;
+  padding: 3px;
+}
+
+.progress {
+  content: '';
+  display: block;
+  background: var(--primary-color);
+  height: 100%;
+  border-radius: 9px;
+}
+
+.alert {
+  text-align: center;
+  padding: 5px;
+  color: orange;
+  border: orange 1px solid;
+}
+
+.form-control {
+  margin: 15px 0;
+}
+
+.form-control label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-control input,
+.form-control select {
+  width: 100%;
+  padding: 4px;
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  border: 0;
+  background: var(--secondary-background-color);
+  color: #fff;
+  padding: 7px 10px;
+  margin-top: 10px;
+}
+
+.btn:active,
+.btn:focus {
+  outline: 0;
+}

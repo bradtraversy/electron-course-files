@@ -1,0 +1,28 @@
+{
+  "name": "sys-top",
+  "productName": "SysTop",
+  "version": "1.0.0",
+  "description": "Monitor your system CPU",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "nodemon --exec electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=false --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"APP NAME\"",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=false --out=release-builds"
+  },
+  "keywords": [
+    "Electron"
+  ],
+  "author": "Brad Traversy",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^8.2.5",
+    "electron-packager": "^14.2.1",
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "electron-log": "^4.1.2",
+    "node-os-utils": "^1.2.2"
+  }
+}
