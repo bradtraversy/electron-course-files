@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(
-      'mongodb+srv://bradt1234:bradt1234@bradscluster-cbmll.mongodb.net/buglogger?retryWrites=true&w=majority',
+      'ADD YOUR DB STRING',
       {
         useNewUrlParser: true,
         useCreateIndex: true,

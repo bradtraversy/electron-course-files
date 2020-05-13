@@ -4,6 +4,8 @@ React/Electron app that uses a MongoDB Atlas database to keep track of logs
 
 ## Usage
 
+Add your MongoDB connection string to config/db.js
+
 
 ### Install dependencies
 
