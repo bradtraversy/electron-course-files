@@ -2,7 +2,7 @@
   "name": "buglogger",
   "productName": "BugLogger",
   "version": "1.0.0",
-  "description": "App bug tracker for teams",
+  "description": "App bug tracker to use with teams",
   "license": "MIT",
   "engines": {
     "node": ">=9.0.0",
