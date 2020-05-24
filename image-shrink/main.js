@@ -124,7 +124,8 @@ async function shrinkImage({ imgPath, quality, dest }) {
 
     log.info(files)
 
-    shell.openItem(dest)
+//     Changed from shell.openItem() for v9
+    shell.openPath(dest)
 
     mainWindow.webContents.send('image:done')
   } catch (err) {
