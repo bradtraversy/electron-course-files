@@ -6,7 +6,7 @@ class MainWindow extends BrowserWindow {
       title: 'SysTop',
       width: isDev ? 800 : 355,
       height: 500,
-      icon: './assets/icons/icon.png',
+      icon: `${__dirname}/assets/icons/icon.png`,
       resizable: isDev ? true : false,
       show: false,
       opacity: 0.9,
