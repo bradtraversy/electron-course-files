@@ -17,7 +17,7 @@
   "author": "Brad Traversy",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^8.2.5",
+    "electron": "^8.5.2",
     "electron-packager": "^14.2.1",
     "nodemon": "^2.0.3"
   },
