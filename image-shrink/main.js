@@ -56,7 +56,7 @@ app.on('ready', () => {
   const mainMenu = Menu.buildFromTemplate(menu)
   Menu.setApplicationMenu(mainMenu)
 
-  mainWindow.on('ready', () => (mainWindow = null))
+  mainWindow.on('close', () => (mainWindow = null))
 })
 
 const menu = [
