@@ -12,7 +12,7 @@ module.exports = {
 			},
 			{
 				test: /\.jsx?$/,
-				use: [{ loader: 'babel-loader', query: { compact: false } }],
+				use: [{ loader: 'babel-loader', options: { presets: ["@babel/preset-env", "@babel/preset-react"], compact: false } }],
 			},
 			{
 				test: /\.(jpe?g|png|gif)$/,
@@ -28,20 +28,24 @@ module.exports = {
 	},
 	target: 'electron-renderer',
 	plugins: [
-		new HtmlWebpackPlugin({ title: 'React Electron App' }),
+		new HtmlWebpackPlugin({ title: 'BugLogger' }),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('development'),
 		}),
 	],
 	devtool: 'cheap-source-map',
 	devServer: {
-		contentBase: path.resolve(__dirname, 'dist'),
-		stats: {
-			colors: true,
-			chunks: false,
-			children: false,
+		static: {
+			directory: path.resolve(__dirname, 'dist'),
 		},
-		before() {
+		devMiddleware: {
+			stats: {
+				colors: true,
+				chunks: false,
+				children: false,
+			}
+		},
+		onBeforeSetupMiddleware() {
 			spawn('electron', ['.'], {
 				shell: true,
 				env: process.env,
